@@ -9,7 +9,13 @@ module.exports = function (app) {
     });
 
     app.get("/skills", function (req, res) {
-        res.render("skills")
+        db.Skills.findAll({include: [db.Extracurriculars, db.Employments, db.Projects]})
+        .then(function(data) {
+            Skills = {
+                Skills: data
+            };
+            res.render("skills", Skills)
+        });
     });
 
     app.get("/employments", function (req, res) {

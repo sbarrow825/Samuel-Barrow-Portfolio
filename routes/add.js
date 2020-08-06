@@ -133,10 +133,10 @@ module.exports = function (app) {
         });
     });
 
-    app.get("/test", function(req, res) {
-        db.Skills.findAll({include: [db.Extracurriculars, db.Employments, db.Projects]})
-        .then(function(data) {
-            res.json(data);
-        });
-    });
+    // app.get("/test", function(req, res) {
+    //     db.Skills.findAll({include: [db.Extracurriculars, db.Employments, db.Projects]})
+    //     .then(function(data) {
+    //         res.json(data);
+    //     });
+    // });
 }
