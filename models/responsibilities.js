@@ -12,17 +12,17 @@ module.exports = function (sequelize, DataTypes) {
     Responsibilities.associate = function(models) {
         Responsibilities.belongsTo(models.Employments, {
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
         Responsibilities.belongsTo(models.Extracurriculars, {
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
         Responsibilities.belongsTo(models.Projects, {
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
     };

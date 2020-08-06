@@ -14,6 +14,8 @@ app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
 // require routes here
+require("./routes/add.js")(app);
+require("./routes/html.js")(app);
 
 const db = require("./models");
 
