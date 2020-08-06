@@ -11,3 +11,15 @@
       </ul>
     </div>
   </nav>
+
+  <div class="container">
+    <h1>Skills</h1>
+
+    <div class="row">
+        <ul>
+            {{#each Employments}}
+            {{> employments/employments-block}}
+            {{/each}}
+        </ul>
+    </div>
+</div>

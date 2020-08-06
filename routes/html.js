@@ -19,7 +19,13 @@ module.exports = function (app) {
     });
 
     app.get("/employments", function (req, res) {
-        res.render("employments")
+        db.Employments.findAll({include: [db.Skills, db.Responsibilities]})
+        .then(function(data) {
+            Employments = {
+                Employments: data
+            };
+            res.render("employments", Employments)
+        });
     });
 
     app.get("/extracurriculars", function (req, res) {
