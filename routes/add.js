@@ -1,4 +1,4 @@
-// routes used for adding info to the Portfolio db
+// routes used for adding info to the Portfolio db. Only for my personal use
 
 var db = require("../models");
 module.exports = function (app) {
@@ -60,9 +60,83 @@ module.exports = function (app) {
         db.Responsibilities.create(newResponsibility)
         .then(function(data) {
             res.json(data);
-        })
-        .catch(function(err) {
-            console.log(err);
+        });
+    });
+
+    app.post("/add/employment-skill", function(req, res) {
+        db.Employments.findOne({
+            where: { id: req.body.EmploymentId }
+        }).then(function(data) {
+            EmploymentToAddSkillTo = data;
+            db.Skills.findOne({
+                where: { id: req.body.SkillId }
+            }).then(function(skill) {
+                EmploymentToAddSkillTo.addSkill(skill);
+                res.json(skill);
+            });
+        });
+    });
+
+    app.post("/add/extracurricular-skill", function(req, res) {
+        db.Extracurriculars.findOne({
+            where: { id: req.body.ExtracurricularId }
+        }).then(function(data) {
+            ExtracurricularToAddSkillTo = data;
+            db.Skills.findOne({
+                where: { id: req.body.SkillId }
+            }).then(function(skill) {
+                ExtracurricularToAddSkillTo.addSkill(skill);
+                res.json(skill);
+            });
+        });
+    });
+
+    app.post("/add/project-skill", function(req, res) {
+        db.Projects.findOne({
+            where: { id: req.body.ProjectId }
+        }).then(function(data) {
+            ProjectToAddSkillTo = data;
+            db.Skills.findOne({
+                where: { id: req.body.SkillId }
+            }).then(function(skill) {
+                ProjectToAddSkillTo.addSkill(skill);
+                res.json(skill);
+            });
+        });
+    });
+
+    app.post("/add/project-skill", function(req, res) {
+        db.Projects.findOne({
+            where: { id: req.body.ProjectId }
+        }).then(function(data) {
+            ProjectToAddSkillTo = data;
+            db.Skills.findOne({
+                where: { id: req.body.SkillId }
+            }).then(function(skill) {
+                ProjectToAddSkillTo.addSkill(skill);
+                res.json(skill);
+            });
+        });
+    });
+
+    app.post("/add/extracurricular-skill", function(req, res) {
+        db.Projects.findOne({
+            where: { id: req.body.ProjectId }
+        }).then(function(data) {
+            ProjectToAddSkillTo = data;
+            db.Skills.findOne({
+                where: { id: req.body.SkillId }
+            }).then(function(skill) {
+                ProjectToAddSkillTo.addSkill(skill);
+                res.json(skill);
+            });
+        });
+    });
+
+    app.get("/test", function(req, res) {
+        db.Skills.findAll({include: [db.Extracurriculars, db.Employments, db.Projects]})
+        .then(function(data) {
+            res.json(data);
         });
     });
 }

@@ -79,4 +79,46 @@ $(document).ready(function() {
             $("#ProjectsId").val("");
         });
     });
+
+    $("#Employment-Skills-Association").on("click", function (req, res) {
+        newAssociation = {
+            EmploymentId: $("#EmploymentAssociationId").val().trim(),
+            SkillId: $("#EmploymentSkillsAssociationId").val().trim()
+        };
+        $.ajax("add/employment-skill", {
+            type: "POST",
+            data: newAssociation
+        }).then(function() {
+            $("#EmploymentAssociationId").val("");
+            $("#EmploymentSkillsAssociationId").val("");
+        });
+    });
+
+    $("#Project-Skills-Association").on("click", function (req, res) {
+        newAssociation = {
+            ProjectId: $("#ProjectAssociationId").val().trim(),
+            SkillId: $("#ProjectSkillsAssociationId").val().trim()
+        };
+        $.ajax("add/project-skill", {
+            type: "POST",
+            data: newAssociation
+        }).then(function() {
+            $("#ProjectAssociationId").val("");
+            $("#ProjectSkillsAssociationId").val("");
+        });
+    });
+
+    $("#Extracurricular-Skills-Association").on("click", function (req, res) {
+        newAssociation = {
+            ExtracurricularId: $("#ExtracurricularAssociationId").val().trim(),
+            SkillId: $("#ExtracurricularSkillsAssociationId").val().trim()
+        };
+        $.ajax("add/extracurricular-skill", {
+            type: "POST",
+            data: newAssociation
+        }).then(function() {
+            $("#ExtracurricularAssociationId").val("");
+            $("#ExtracurricularSkillsAssociationId").val("");
+        });
+    });
 })
