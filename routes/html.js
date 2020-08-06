@@ -39,7 +39,13 @@ module.exports = function (app) {
     });
 
     app.get("/projects", function (req, res) {
-        res.render("projects")
+        db.Projects.findAll({include: [db.Skills, db.Responsibilities]})
+        .then(function(data) {
+            Projects = {
+                Projects: data
+            };
+            res.render("projects", Projects)
+        });
     });
 
     app.get("/resume", function (req, res) {

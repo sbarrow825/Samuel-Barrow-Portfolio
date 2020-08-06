@@ -1,13 +1,26 @@
-  <nav>
+<nav>
     <div class="nav-wrapper">
-      <a class="brand-logo">Samuel Barrow's Portfolio</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/">About Me</a></li>
-        <li><a href="/employments">Employment History</a></li>
-        <li><a href="/skills">Skills</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/extracurriculars">Extracurriculars</a></li>
-        <li><a href="/resume">Resume</a></li>
-      </ul>
+        <a class="brand-logo">Samuel Barrow's Portfolio</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/">About Me</a></li>
+            <li><a href="/employments">Employment History</a></li>
+            <li><a href="/skills">Skills</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/extracurriculars">Extracurriculars</a></li>
+            <li><a href="/resume">Resume</a></li>
+        </ul>
     </div>
-  </nav>
+</nav>
+
+
+<div class="container">
+    <h1>Projects</h1>
+
+    <div class="row">
+        <ul>
+            {{#each Projects}}
+            {{> projects/projects-block}}
+            {{/each}}
+        </ul>
+    </div>
+</div>
